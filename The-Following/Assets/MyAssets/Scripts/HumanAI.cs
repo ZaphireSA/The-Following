@@ -16,7 +16,15 @@ public class HumanAI : MonoBehaviour {
 
     [SerializeField] float maxRoamDistance = 10f;
 
+    Animator anim;
+
     GameObject lastEntitySpotted;
+
+    void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+        anim.SetInteger("Type", 1);
+    }
 
     private void Start()
     {
@@ -46,9 +54,13 @@ public class HumanAI : MonoBehaviour {
                 agent.SetDestination(targetPos);
                 agent.speed = runSpeed;
                 agent.isStopped = false;
+                anim.SetFloat("SpeedZ", 1);
+                anim.SetBool("IsRunning", true);
+                //anim.SetFloat("")
                 yield return new WaitForSeconds(1f);
                 if (!DetectThreat())
                 {
+                    anim.SetBool("IsRunning", false);
                     //targetPos = transform.position;
                     //agent.SetDestination(targetPos);
                 }
@@ -56,11 +68,13 @@ public class HumanAI : MonoBehaviour {
             if (Vector3.Distance(transform.position, targetPos) < 1.2)
             {
                 //agent.isStopped = true;
+                anim.SetFloat("SpeedZ", 0);
                 yield return new WaitForSeconds(Random.Range(0, 5));
                 targetPos = RandomNavSphere(transform.position, maxRoamDistance, 1);
                 agent.SetDestination(targetPos);
                 agent.speed = walkSpeed;
                 agent.isStopped = false;
+                anim.SetFloat("SpeedZ", 1);
             }
             yield return new WaitForSeconds(0.2f);
         }
