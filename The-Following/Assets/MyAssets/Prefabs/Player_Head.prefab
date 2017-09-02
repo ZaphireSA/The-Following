@@ -212,10 +212,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectVisualDistance: 3
   detectHearingDistance: 0
-  biteDistance: 15
+  biteDistance: 3
   followerPrefab: {fileID: 1018808398314876, guid: 4d707445809eefd4c8aed67477ac9350,
     type: 2}
-  followerPosFactor: 2
+  followerPosFactor: 1.5
+  nextStagePrefab: {fileID: 1806924217079336, guid: 1383103548acbf940a5aa86a0c9ff237,
+    type: 2}
+  requiredProtein: 5
+  currentProtein: 0
 --- !u!135 &135899579073413588
 SphereCollider:
   m_ObjectHideFlags: 1

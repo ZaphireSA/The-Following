@@ -17,10 +17,19 @@ public class Player : MonoBehaviour {
     [SerializeField]
     float followerPosFactor = 2f;
 
+    [SerializeField]
+    GameObject nextStagePrefab;
+    [SerializeField]
+    int requiredProtein = 5;
+
+    [SerializeField]
+    int currentProtein = 0;
+
     private void Start()
     {
         StartCoroutine(BiteEnemies());
         StartCoroutine(ControlFollowers());
+        FindObjectOfType<CameraFollow>().target = transform;
     }
 
     IEnumerator ControlFollowers()
@@ -52,6 +61,17 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void GiveProtein(int amount)
+    {
+        currentProtein += amount;
+        if (currentProtein >= requiredProtein && nextStagePrefab != null)
+        {
+            var newPlayer = Instantiate(nextStagePrefab, transform.position, transform.rotation);
+            Player p = newPlayer.GetComponent<Player>();
+            p.followers = followers;
+            Destroy(gameObject);      
+        }
+    }
 
     IEnumerator BiteEnemies()
     {
