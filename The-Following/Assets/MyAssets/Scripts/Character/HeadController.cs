@@ -23,8 +23,7 @@ public class HeadController : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
             velocity.x = 1;
 
-        rb.AddForce(velocity * rollSpeed * Time.deltaTime);
-        Debug.Log(velocity);
+        rb.AddForce(velocity.normalized * rollSpeed * Time.deltaTime);
         velocity = Vector3.zero;
     }
 }
