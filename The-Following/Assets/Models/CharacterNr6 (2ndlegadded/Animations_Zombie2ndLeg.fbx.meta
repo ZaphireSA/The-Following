@@ -100,6 +100,9 @@ ModelImporter:
     4300000: Character
     7400000: Armature.001|CharacterAction
     7400002: Armature.001|Walk.001
+    7400004: Armature.001|CivilianRun
+    7400006: Armature.001|Run
+    7400008: Armature.001|ZombieRun
     9500000: //RootNode
     13700000: Character
   materials:
