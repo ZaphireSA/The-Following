@@ -27,23 +27,26 @@ public class Player : MonoBehaviour {
     {
         while (true)
         {
-            float x = -1;
+            float x = -3;
             float y = 1;
             for (int i = 0; i < followers.Count; i++)
             {
+                x += 2;
                 FollowerAI fol = followers[i];
                 if (fol == null) continue;
-                Vector3 targetPos = transform.position;
+                Vector3 targetPos = Vector3.zero;
                 targetPos.z += y * followerPosFactor;
                 targetPos.x += x * followerPosFactor;
-                fol.SetTarget(transform.TransformPoint(targetPos));
+                fol.SetTarget(transform.TransformPoint(-targetPos));
 
-                x += 2;
+                
+
                 if (x == y)
                 {
                     y++;
-                    x = -y;
+                    x = -y -2;
                 }
+                
             }
             yield return new WaitForSeconds(0.2f);
         }
