@@ -51,6 +51,8 @@ ModelImporter:
     100086: UpperArm.R
     100088: UpperLeg.L
     100090: UpperLeg.R
+    100092: UpperLeg.L_end
+    100094: UpperLeg.R_end
     400000: //RootNode
     400002: Armature.001
     400004: Character
@@ -97,6 +99,8 @@ ModelImporter:
     400086: UpperArm.R
     400088: UpperLeg.L
     400090: UpperLeg.R
+    400092: UpperLeg.L_end
+    400094: UpperLeg.R_end
     4300000: Character
     7400000: Armature.001|CharacterAction
     7400002: Armature.001|Walk.001
