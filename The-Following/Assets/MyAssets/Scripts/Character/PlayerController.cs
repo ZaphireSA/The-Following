@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
         var horizontal = Input.GetAxis("Horizontal");
         moveDirection = new Vector3(horizontal, 0, vertical);
         controller.SimpleMove(moveDirection * rollSpeed * Time.deltaTime);
+        if (moveDirection != Vector3.zero)
+            transform.rotation = Quaternion.LookRotation(moveDirection);
         velocity = Vector3.zero;
     }
 }
