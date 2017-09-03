@@ -845,8 +845,10 @@ MonoBehaviour:
   biteDistance: 2
   followerPrefab: {fileID: 1018808398314876, guid: 4d707445809eefd4c8aed67477ac9350,
     type: 2}
+  soulPrefab: {fileID: 1091537409549104, guid: 7a5d952ce0042ed4bafb7a2b1d7db582, type: 2}
   followerPosFactor: 1.5
-  nextStagePrefab: {fileID: 0}
+  nextStagePrefab: {fileID: 1863375901227852, guid: 2768c3159e1ff92408e9f18dd5080f2b,
+    type: 2}
   requiredProtein: 5
   currentProtein: 0
 --- !u!114 &114264830401364080
