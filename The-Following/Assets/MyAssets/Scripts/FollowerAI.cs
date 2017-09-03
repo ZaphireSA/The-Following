@@ -29,7 +29,7 @@ public class FollowerAI : MonoBehaviour {
         targetPos = transform.position;
         agent.speed = walkSpeed;
         SetTarget(transform.position);
-        anim.SetFloat("SpeedZ", 1);
+        
         //StartCoroutine(Roam());
     }
 
@@ -42,6 +42,8 @@ public class FollowerAI : MonoBehaviour {
 
         //targetPos = RandomNavSphere(transform.position, maxRoamDistance, 1);
         agent.SetDestination(targetPos);
+
+        anim.SetFloat("SpeedZ", agent.velocity.magnitude); 
     }
 
 }
