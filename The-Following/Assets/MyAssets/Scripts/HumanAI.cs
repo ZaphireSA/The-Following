@@ -16,9 +16,9 @@ public class HumanAI : MonoBehaviour {
 
     [SerializeField] float maxRoamDistance = 10f;
 
-    [SerializeField] Material shirtColor;
-    [SerializeField] Material pantsColor;
-    [SerializeField] Material shoeColor;
+    public Color shirtColor;
+    public Color pantsColor;
+    public Color shoeColor;
 
     [SerializeField] Renderer renderer;
 
@@ -36,9 +36,12 @@ public class HumanAI : MonoBehaviour {
     {
         agent = GetComponent<NavMeshAgent>();
         targetPos = transform.position;
-        renderer.materials[1].color = new Color(Random.value, Random.value, Random.value, 1.0f);
-        renderer.materials[2].color = new Color(Random.value, Random.value, Random.value, 1.0f);
-        renderer.materials[3].color = new Color(Random.value, Random.value, Random.value, 1.0f);
+        shirtColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+        pantsColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+        shoeColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+        renderer.materials[1].color = shirtColor;
+        renderer.materials[2].color = pantsColor;
+        renderer.materials[3].color = shoeColor;
         StartCoroutine(Roam());
     }
 
