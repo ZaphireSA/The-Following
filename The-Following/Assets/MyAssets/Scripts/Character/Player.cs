@@ -44,11 +44,15 @@ public class Player : MonoBehaviour {
 
     void ExplodeFollowers()
     {
-        for(int i = 0; i < followers.Count; i++)
+        while(followers.Count > 0)
         {
-            if (followers[i] == null) continue;
-            Instantiate(soulPrefab, followers[i].transform.position, Quaternion.identity);
-            Destroy(followers[i].gameObject);
+            var follower = followers[0];
+            followers.RemoveAt(0);
+            if (follower != null)
+            {
+                Instantiate(soulPrefab, follower.transform.position, Quaternion.identity);
+                Destroy(follower.gameObject);
+            }
         }
     }
 
