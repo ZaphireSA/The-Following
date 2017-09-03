@@ -16,6 +16,9 @@ public class FollowerAI : MonoBehaviour {
 
     Animator anim;
 
+    public
+    Renderer rend;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

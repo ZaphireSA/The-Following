@@ -27,6 +27,17 @@ public class Player : MonoBehaviour {
     [SerializeField]
     int currentProtein = 0;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip biteAudio;
+    [SerializeField] AudioClip convertAudio;
+    [SerializeField] AudioClip absorbAudio;
+    [SerializeField] AudioClip pickupAudio;
+
+    private void Awake()
+    {
+        audioSource = GetComponentInChildren<AudioSource>();
+    }
+
     private void Start()
     {
         StartCoroutine(BiteEnemies());
@@ -44,6 +55,7 @@ public class Player : MonoBehaviour {
 
     void ExplodeFollowers()
     {
+        if (followers.Count > 0) audioSource.PlayOneShot(convertAudio);
         while(followers.Count > 0)
         {
             var follower = followers[0];
@@ -104,12 +116,30 @@ public class Player : MonoBehaviour {
             var enemyList = FindObjectsOfType<HumanAI>().Where(x => Vector3.Distance(transform.position, x.transform.position) < biteDistance).ToList();
             for (int i = 0; i < enemyList.Count; i++)
             {
+                audioSource.PlayOneShot(biteAudio);
                 var newFollower = Instantiate(followerPrefab, enemyList[i].transform.position, enemyList[i].transform.rotation);
+                Renderer rend = newFollower.GetComponentInChildren<FollowerAI>().rend;
+                if (rend != null)
+                {
+                    rend.materials[1].color = enemyList[i].shirtColor;
+                    rend.materials[2].color = enemyList[i].pantsColor;
+                    rend.materials[3].color = enemyList[i].shoeColor;
+                }
                 followers.Add(newFollower.GetComponent<FollowerAI>());
                 Destroy(enemyList[i].gameObject);
             }
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    public void PlayPickupClip()
+    {
+        audioSource.PlayOneShot(pickupAudio);
+    }
+
+    public void PlayAbsorbClip()
+    {
+        audioSource.PlayOneShot(absorbAudio);
     }
 
 }

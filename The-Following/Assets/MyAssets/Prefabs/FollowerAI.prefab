@@ -1107,7 +1107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018808398314876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.38678, y: 0, z: 5.295147}
+  m_LocalPosition: {x: 7.5957794, y: 0, z: -7.0602417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4985022279329424}
@@ -1454,6 +1454,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   walkSpeed: 5
   runSpeed: 10
+  rend: {fileID: 137200967318535382}
 --- !u!136 &136321213719034890
 CapsuleCollider:
   m_ObjectHideFlags: 1

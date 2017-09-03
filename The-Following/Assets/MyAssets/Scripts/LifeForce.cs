@@ -7,9 +7,13 @@ public class LifeForce : MonoBehaviour {
     Rigidbody rb;
     [SerializeField] float speed = 2;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip absorbAudio;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     // Use this for initialization
@@ -26,6 +30,8 @@ public class LifeForce : MonoBehaviour {
         float dist = Vector3.Distance(transform.position, p.transform.position);
         if (dist < 0.5f)
         {
+            p.PlayAbsorbClip();
+            //audioSource.PlayOneShot(absorbAudio);
             Destroy(gameObject);
             var gm = FindObjectOfType<GameManager>();
             if (gm != null)
