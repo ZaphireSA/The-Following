@@ -14,9 +14,13 @@ public class FollowerAI : MonoBehaviour {
     float runSpeed = 10f;
     Vector3 targetPos;
 
+    Animator anim;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
+        anim.SetInteger("Type", 2);
     }
 
     private void Start()
@@ -25,6 +29,7 @@ public class FollowerAI : MonoBehaviour {
         targetPos = transform.position;
         agent.speed = walkSpeed;
         SetTarget(transform.position);
+        anim.SetFloat("SpeedZ", 1);
         //StartCoroutine(Roam());
     }
 
