@@ -636,8 +636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6259fef064a6c944914f37d18b517d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectVisualDistance: 1
-  detectHearingDistance: 0
+  detectVisualDistance: 4
+  detectHearingDistance: 4
   biteDistance: 2
   followerPrefab: {fileID: 1018808398314876, guid: 4d707445809eefd4c8aed67477ac9350,
     type: 2}
