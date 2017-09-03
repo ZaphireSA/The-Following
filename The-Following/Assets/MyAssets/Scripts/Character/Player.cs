@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
     [SerializeField]
     GameObject followerPrefab;
     [SerializeField]
+    GameObject soulPrefab;
+    [SerializeField]
     float followerPosFactor = 2f;
 
     [SerializeField]
@@ -30,6 +32,24 @@ public class Player : MonoBehaviour {
         StartCoroutine(BiteEnemies());
         StartCoroutine(ControlFollowers());
         FindObjectOfType<CameraFollow>().target = transform;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ExplodeFollowers();
+        }
+    }
+
+    void ExplodeFollowers()
+    {
+        for(int i = 0; i < followers.Count; i++)
+        {
+            if (followers[i] == null) continue;
+            Instantiate(soulPrefab, followers[i].transform.position, Quaternion.identity);
+            Destroy(followers[i].gameObject);
+        }
     }
 
     IEnumerator ControlFollowers()
