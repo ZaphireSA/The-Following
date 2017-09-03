@@ -10,10 +10,18 @@ public class PlayerController : MonoBehaviour {
     Vector3 velocity = Vector3.zero;
     Animator anim;
     // Use this for initialization
-    void Start()
+
+    private void Awake()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
+        anim.SetInteger("Type", 0);
+    }
+
+    void Start()
+    {
+        
+
     }
 
     // Update is called once per frame
@@ -29,11 +37,16 @@ public class PlayerController : MonoBehaviour {
         {
             transform.rotation = Quaternion.LookRotation(moveDirection);
             anim.SetFloat("SpeedZ", 1f);
-        } else
+            anim.SetBool("IsRunning", true);
+
+        }
+        else
         {
             anim.SetFloat("SpeedZ", 0f);
+            anim.SetBool("IsRunning", false);
+
         }
-            
+
         velocity = Vector3.zero;
     }
 }
