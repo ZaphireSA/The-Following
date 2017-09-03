@@ -23,6 +23,7 @@ ModelImporter:
     100030: UpperLeg.L_end
     100032: UpperLeg.R
     100034: UpperLeg.R_end
+    100036: Character.001
     400000: //RootNode
     400002: Armature
     400004: Character
@@ -41,7 +42,9 @@ ModelImporter:
     400030: UpperLeg.L_end
     400032: UpperLeg.R
     400034: UpperLeg.R_end
+    400036: Character.001
     4300000: Character
+    4300002: Character.001
     7400000: Idle
     7400002: Armature|Armature.001Action
     7400004: Armature|default
@@ -49,6 +52,7 @@ ModelImporter:
     7400008: Armature|Worm.002
     9500000: //RootNode
     13700000: Character
+    13700002: Character.001
   materials:
     importMaterials: 1
     materialName: 0
