@@ -16,13 +16,19 @@ public class HumanAI : MonoBehaviour {
 
     [SerializeField] float maxRoamDistance = 10f;
 
+    [SerializeField] Material shirtColor;
+    [SerializeField] Material pantsColor;
+    [SerializeField] Material shoeColor;
+
+    [SerializeField] Renderer renderer;
+
     Animator anim;
 
     GameObject lastEntitySpotted;
 
     void Awake()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();        
         anim.SetInteger("Type", 1);
     }
 
@@ -30,6 +36,9 @@ public class HumanAI : MonoBehaviour {
     {
         agent = GetComponent<NavMeshAgent>();
         targetPos = transform.position;
+        renderer.materials[1].color = new Color(Random.value, Random.value, Random.value, 1.0f);
+        renderer.materials[2].color = new Color(Random.value, Random.value, Random.value, 1.0f);
+        renderer.materials[3].color = new Color(Random.value, Random.value, Random.value, 1.0f);
         StartCoroutine(Roam());
     }
 

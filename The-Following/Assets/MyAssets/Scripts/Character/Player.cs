@@ -104,7 +104,7 @@ public class Player : MonoBehaviour {
             var enemyList = FindObjectsOfType<HumanAI>().Where(x => Vector3.Distance(transform.position, x.transform.position) < biteDistance).ToList();
             for (int i = 0; i < enemyList.Count; i++)
             {
-                var newFollower = Instantiate(followerPrefab, enemyList[i].transform.position, Quaternion.identity);
+                var newFollower = Instantiate(followerPrefab, enemyList[i].transform.position, enemyList[i].transform.rotation);
                 followers.Add(newFollower.GetComponent<FollowerAI>());
                 Destroy(enemyList[i].gameObject);
             }
