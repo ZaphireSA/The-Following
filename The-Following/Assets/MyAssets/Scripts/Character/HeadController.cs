@@ -14,16 +14,15 @@ public class HeadController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.W))
-            velocity.z = 1;
-        else if (Input.GetKey(KeyCode.S))
-            velocity.z = -1;
-        if (Input.GetKey(KeyCode.A))
-            velocity.x = -1;
-        if (Input.GetKey(KeyCode.D))
-            velocity.x = 1;
+        var vertical = Input.GetAxis("Vertical");
+        var horizontal = Input.GetAxis("Horizontal");
+        velocity = new Vector3(horizontal, 0, vertical);
 
+        //velocity = Vector3.zero;
+    }
+
+    private void FixedUpdate()
+    {
         rb.AddForce(velocity.normalized * rollSpeed * Time.deltaTime);
-        velocity = Vector3.zero;
     }
 }
